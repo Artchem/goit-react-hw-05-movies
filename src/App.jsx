@@ -1,4 +1,4 @@
-import Home from 'pages/Home/Home';
+// import Home from 'pages/Home/Home';
 import { Route, Routes } from 'react-router-dom';
 // import Cast from 'components/Cast/Cast';
 // import Layout from 'components/Layout/Layout';
