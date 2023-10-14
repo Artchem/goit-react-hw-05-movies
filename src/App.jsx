@@ -1,4 +1,4 @@
-import Home from 'pages/Home/Home';
+// import Home from 'pages/Home/Home';
 import { Route, Routes } from 'react-router-dom';
 // import Cast from 'components/Cast/Cast';
 // import Layout from 'components/Layout/Layout';
@@ -6,9 +6,9 @@ import { Route, Routes } from 'react-router-dom';
 // import Reviews from 'components/Reviews/Reviews';
 // import Home from 'pages/Home/Home';
 // import Movies from 'pages/Movies/Movies';
-// import { lazy } from 'react';
+import { lazy } from 'react';
 
-// const Home = lazy(() => import(''));
+const Home = lazy(() => import('./pages/Home/Home'));
 // const Movies = lazy(() => import('..'));
 
 const App = () => {
