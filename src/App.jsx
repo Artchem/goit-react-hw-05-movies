@@ -13,7 +13,8 @@ import { Route, Routes } from 'react-router-dom';
 const App = () => {
   return (
     <Routes>
-      <Route>
+      <Route path="/" element={<div />}>
+        <Route index element={<div />} />
         <Route path="movies" element={<div />} />
       </Route>
       {/* <Route path="/" element={<Layout />}>
