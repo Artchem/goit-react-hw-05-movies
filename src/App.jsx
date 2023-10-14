@@ -13,7 +13,9 @@ import { Route, Routes } from 'react-router-dom';
 const App = () => {
   return (
     <Routes>
-      <Route></Route>
+      <Route>
+        <Route path="movies" element={<div />} />
+      </Route>
       {/* <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="movies" element={<Movies />} />
