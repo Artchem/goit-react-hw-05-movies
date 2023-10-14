@@ -2,6 +2,12 @@ import SearchForm from 'components/SearchForm/SearchForm';
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { getMoviesByQuery } from 'services/api-themovie';
+import {
+  GalleryList,
+  StyledImg,
+  StyledItem,
+  StyledText,
+} from './Movies.styled';
 
 function Movies() {
   const [searchMovies, setSearchMovies] = useState(null);
@@ -9,6 +15,9 @@ function Movies() {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
   const location = useLocation();
+  const defaultImg =
+    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
+
   console.log('searchParams :>> ', searchParams);
   console.log('query :>> ', query);
 
@@ -58,16 +67,26 @@ function Movies() {
     <>
       <SearchForm onSubmit={handleFormSubmit} />
       {searchMovies && (
-        <ul>
+        <GalleryList>
           {searchMovies.map(movie => (
-            <li key={movie.id}>
-              <Link to={`${movie.id}`} state={{ from: location }}>
-                {movie.title}
-                {movie.name}
+            <StyledItem key={movie.id}>
+              <Link to={`movies/${movie.id}`} state={{ from: location }}>
+                <StyledImg
+                  src={
+                    movie.poster_path
+                      ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                      : defaultImg
+                  }
+                  alt={movie.title}
+                />
+                <StyledText>
+                  {movie.title}
+                  {movie.name}
+                </StyledText>
               </Link>
-            </li>
+            </StyledItem>
           ))}
-        </ul>
+        </GalleryList>
       )}
     </>
   );

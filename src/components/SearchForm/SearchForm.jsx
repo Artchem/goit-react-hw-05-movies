@@ -1,3 +1,12 @@
+import { toast } from 'react-toastify';
+import {
+  StyledBtn,
+  StyledForm,
+  StyledInput,
+  StyledSpan,
+} from './SearchForm.styled';
+import { FaSistrix } from 'react-icons/fa6';
+
 const { useState } = require('react');
 
 function SearchForm({ onSubmit }) {
@@ -11,7 +20,7 @@ function SearchForm({ onSubmit }) {
   const handleSubmit = evt => {
     evt.preventDefault();
     if (searchText.trim() === '') {
-      //   toast.error('Enter search movies !');
+      toast.error('Enter search movies !');
       return;
     }
     onSubmit(searchText);
@@ -22,8 +31,8 @@ function SearchForm({ onSubmit }) {
   };
 
   return (
-    <form>
-      <input
+    <StyledForm>
+      <StyledInput
         onChange={handleChange}
         value={searchText}
         name="searchText"
@@ -32,11 +41,11 @@ function SearchForm({ onSubmit }) {
         // autofocus
         placeholder="Search movies"
       />
-      <button type="submit" onClick={handleSubmit}>
-        {/* <FaSistrix size={25} /> */}
-        <span>Search</span>
-      </button>
-    </form>
+      <StyledBtn type="submit" onClick={handleSubmit}>
+        <FaSistrix size={25} />
+        <StyledSpan>Search</StyledSpan>
+      </StyledBtn>
+    </StyledForm>
   );
 }
 

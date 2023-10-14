@@ -8,6 +8,8 @@ function Cast() {
 
   const { movieId } = useParams();
   //   console.log('movieId :>> ', movieId);
+  const defaultImg =
+    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
 
   useEffect(() => {
     async function fetchTrendingFilm() {
@@ -35,7 +37,11 @@ function Cast() {
         infoCasts.map(cast => (
           <li key={cast.id}>
             <img
-              src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
+              src={
+                cast.poster_path
+                  ? `https://image.tmdb.org/t/p/w500/${cast.poster_path}`
+                  : defaultImg
+              }
               alt={cast.name}
             />
             <div>

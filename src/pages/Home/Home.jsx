@@ -1,6 +1,7 @@
 // import MoviesGallery from 'components/MoviesGallery/MoviesGallery';
+import MoviesGallery from 'components/MoviesGallery/MoviesGallery';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { fetchMovie } from 'services/api-themovie';
 
 function Home() {
@@ -12,7 +13,6 @@ function Home() {
       try {
         const data = await fetchMovie('trending/all/day');
         // console.log('data :>> ', data);
-        // setPhotos(prevState => [...prevState, ...hits]);
         setFilms(data.results);
         // console.log('results :>> ', data.results);
       } catch (error) {
@@ -26,23 +26,6 @@ function Home() {
   }, []);
   // console.log('films :>> ', films);
 
-  return (
-    <>
-      {/* {films && <MoviesGallery movies={films} />} */}
-      <ul>
-        {films &&
-          films.map(film => {
-            return (
-              <li key={film.id}>
-                <Link to={`movies/${film.id}`}>
-                  {film.title}
-                  {film.name}
-                </Link>
-              </li>
-            );
-          })}
-      </ul>
-    </>
-  );
+  return <>{films && <MoviesGallery movies={films} />}</>;
 }
 export default Home;

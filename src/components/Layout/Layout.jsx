@@ -1,10 +1,13 @@
+import { Loader } from 'components/Loader/Loader';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { StyledNavLink } from './Layout.styled';
 
 function Layout() {
   return (
-    <div>
+    <>
       <header>
         <nav>
           <StyledNavLink to="/">Home</StyledNavLink>
@@ -12,11 +15,13 @@ function Layout() {
         </nav>
       </header>
       <main>
-        <Suspense fallback={<div>Loading....</div>}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </main>
-    </div>
+      <footer></footer>
+      <ToastContainer autoClose={3000} position="top-right" />
+    </>
   );
 }
 

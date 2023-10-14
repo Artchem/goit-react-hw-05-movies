@@ -1,6 +1,15 @@
+import { Loader } from 'components/Loader/Loader';
 import { Suspense, useEffect, useRef, useState } from 'react';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { fetchMovie } from 'services/api-themovie';
+import {
+  Container,
+  FilmInfo,
+  LinkButton,
+  StyledImage,
+  StyledUl,
+  Title,
+} from './MovieDetails.styled';
 
 function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState(null);
@@ -11,6 +20,8 @@ function MovieDetails() {
 
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/');
+  const defaultImg =
+    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
 
   useEffect(() => {
     async function fetchTrendingFilm() {
@@ -35,35 +46,46 @@ function MovieDetails() {
 
   return (
     movieDetails && (
-      <>
-        <Link to={backLinkLocationRef.current}>Go back</Link>
-        <div>
-          <img
-            src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`}
-            alt=""
+      <Container>
+        <LinkButton to={backLinkLocationRef.current}>Go back</LinkButton>
+        <FilmInfo>
+          <StyledImage
+            src={
+              movieDetails.poster_path
+                ? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`
+                : defaultImg
+            }
+            alt={movieDetails.title}
           />
-          <h2>{movieDetails.title}</h2>
-          <p>User Score: {movieDetails.popularity}</p>
-          <h3>Overview</h3>
-          <p>{movieDetails.overview}</p>
-          <h3>Genres</h3>
-          <p>{movieDetails.genres[0].name}</p>
-        </div>
+          <div>
+            <h2>
+              {movieDetails.title}{' '}
+              {movieDetails.release_date
+                ? `(${movieDetails.release_date.slice(0, 4)})`
+                : ''}
+            </h2>
+            <p>User Score: {movieDetails.vote_average.toFixed(1) * 10}%</p>
+            <h3>Overview</h3>
+            <p>{movieDetails.overview}</p>
+            <h3>Genres</h3>
+            <p>{movieDetails.genres.map(genre => genre.name).join(', ')}</p>
+          </div>
+        </FilmInfo>
         <div>
-          <h3>Additional information</h3>
-          <ul>
+          <Title>Additional information</Title>
+          <StyledUl>
             <li>
-              <Link to="cast">Cast</Link>
+              <LinkButton to="cast">Cast</LinkButton>
             </li>
             <li>
-              <Link to="reviews">Reviews</Link>
+              <LinkButton to="reviews">Reviews</LinkButton>
             </li>
-          </ul>
-          <Suspense fallback={<div>Loading....</div>}>
+          </StyledUl>
+          <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
         </div>
-      </>
+      </Container>
     )
   );
 }
