@@ -1,4 +1,4 @@
-// import Home from 'pages/Home/Home';
+import Home from 'pages/Home/Home';
 import { Route, Routes } from 'react-router-dom';
 // import Cast from 'components/Cast/Cast';
 // import Layout from 'components/Layout/Layout';
@@ -15,7 +15,7 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<div />}>
-        <Route index element={<div />} />
+        <Route index element={<Home />} />
         <Route path="movies" element={<div />} />
         <Route path="movies/:movieId" element={<div />}>
           <Route path="cast" element={<div />} />
