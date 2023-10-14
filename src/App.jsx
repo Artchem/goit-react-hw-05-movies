@@ -10,7 +10,7 @@ import { Route, Routes } from 'react-router-dom';
 // const Home = lazy(() => import(''));
 // const Movies = lazy(() => import('..'));
 
-function App() {
+const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -24,6 +24,6 @@ function App() {
       </Route>
     </Routes>
   );
-}
+};
 
 export default App;
