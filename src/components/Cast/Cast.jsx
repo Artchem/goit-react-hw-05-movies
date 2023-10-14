@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Card } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { fetchMovie } from 'services/api-themovie';
 
@@ -35,17 +34,14 @@ function Cast() {
       {infoCasts &&
         infoCasts.map(cast => (
           <li key={cast.id}>
-            <Card style={{ width: '16rem' }}>
-              <Card.Img
-                variant="top"
-                src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
-                alt={cast.name}
-              />
-              <Card.Body>
-                <Card.Title>{cast.name}</Card.Title>
-                <Card.Text>Character: {cast.character}</Card.Text>
-              </Card.Body>
-            </Card>
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
+              alt={cast.name}
+            />
+            <div>
+              <title>{cast.name}</title>
+              <p>Character: {cast.character}</p>
+            </div>
           </li>
         ))}
     </ul>

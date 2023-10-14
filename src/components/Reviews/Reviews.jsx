@@ -5,7 +5,7 @@ import { fetchMovie } from 'services/api-themovie';
 
 function Reviews() {
   const [dataReviews, setdataReviews] = useState(null);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
 
   const { movieId } = useParams();
   //   console.log('movieId :>> ', movieId);
@@ -20,7 +20,7 @@ function Reviews() {
         setdataReviews(results);
         console.log('results :>> ', results);
       } catch (error) {
-        setError(error.message);
+        // setError(error.message);
       } finally {
         // setLoading(false);
       }
