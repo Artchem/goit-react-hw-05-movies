@@ -5,7 +5,7 @@ import { getMoviesByQuery } from 'services/api-themovie';
 
 function Movies() {
   const [searchMovies, setSearchMovies] = useState(null);
-  //   const [error, setError] = useState(null);
+  const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
   const location = useLocation();
@@ -22,7 +22,7 @@ function Movies() {
         setSearchMovies(data.results);
         console.log('searchMovies :>> ', data.results);
       } catch (error) {
-        // setError(error.message);
+        setError(error.message);
       } finally {
         // setLoading(false);
       }
