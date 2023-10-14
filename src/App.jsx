@@ -5,15 +5,15 @@
 // import Home from 'pages/Home/Home';
 // import Movies from 'pages/Movies/Movies';
 // import { lazy } from 'react';
-// import { Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 // const Home = lazy(() => import(''));
 // const Movies = lazy(() => import('..'));
 
 function App() {
   return (
-    <div>
-      {/* <Routes>
+    <>
+      <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="movies" element={<Movies />} />
@@ -22,8 +22,8 @@ function App() {
             <Route path="reviews" element={<Reviews />} />
           </Route>
         </Route>
-      </Routes> */}
-    </div>
+      </Routes>
+    </>
   );
 }
 
