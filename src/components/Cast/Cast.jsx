@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovie } from 'services/api-themovie';
+import { StyledImage, StyledItem, StyledList, StyledText } from './Cast.styled';
 
 function Cast() {
   const [infoCasts, setInfoCasts] = useState(null);
@@ -32,25 +33,25 @@ function Cast() {
 
   console.log('infoCasts :>> ', infoCasts);
   return (
-    <ul>
+    <StyledList>
       {infoCasts &&
         infoCasts.map(cast => (
-          <li key={cast.id}>
-            <img
+          <StyledItem key={cast.id}>
+            <StyledImage
               src={
-                cast.poster_path
-                  ? `https://image.tmdb.org/t/p/w500/${cast.poster_path}`
+                cast.profile_path
+                  ? `https://image.tmdb.org/t/p/w500/${cast.profile_path}`
                   : defaultImg
               }
               alt={cast.name}
             />
             <div>
-              <title>{cast.name}</title>
-              <p>Character: {cast.character}</p>
+              <StyledText>Name: {cast.name}</StyledText>
+              <StyledText>Character: {cast.character}</StyledText>
             </div>
-          </li>
+          </StyledItem>
         ))}
-    </ul>
+    </StyledList>
   );
 }
 

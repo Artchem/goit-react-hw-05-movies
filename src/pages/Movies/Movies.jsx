@@ -70,7 +70,7 @@ function Movies() {
         <GalleryList>
           {searchMovies.map(movie => (
             <StyledItem key={movie.id}>
-              <Link to={`movies/${movie.id}`} state={{ from: location }}>
+              <Link to={`${movie.id}`} state={{ from: location }}>
                 <StyledImg
                   src={
                     movie.poster_path
