@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledList = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  /* justify-content: center; */
   gap: 10px;
   list-style: none;
 `;
@@ -15,6 +15,7 @@ export const StyledItem = styled.li`
 export const StyledImage = styled.img`
   display: block;
   width: 200px;
+  border-radius: 5px;
 `;
 
 export const StyledText = styled.p`

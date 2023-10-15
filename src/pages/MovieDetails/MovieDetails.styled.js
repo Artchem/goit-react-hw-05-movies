@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   padding-left: 25px;
+  padding-right: 70px;
 `;
 
 export const LinkButton = styled(Link)`
@@ -36,16 +37,16 @@ export const FilmInfo = styled.div`
   margin-top: 30px;
   margin-bottom: 30px;
 `;
-export const Title = styled.ul`
+export const Title = styled.h2`
   font-size: 24px;
-  padding-left: 30px;
+  /* padding-left: 30px; */
 `;
 
 export const StyledUl = styled.ul`
   display: flex;
   gap: 20px;
-
   list-style: none;
-  /* margin-top: 30px;
-  margin-bottom: 30px; */
+  padding: 0;
 `;
+
+export const StyledInfo = styled.div``;

@@ -3,11 +3,11 @@ import { styled } from 'styled-components';
 export const GalleryList = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  padding-left: 25px;
   gap: 15px;
   margin-top: 30px;
   margin-bottom: 30px;
-  padding: 0;
+  /* padding: 0; */
 `;
 
 export const StyledItem = styled.li`

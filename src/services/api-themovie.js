@@ -10,18 +10,18 @@ axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 // safesearch: true,
 // per_page: 12,
 // };
-export async function fetchMovie(query) {
+export async function fetchMovie(query, page = 1) {
   const resp = await axios.get(
-    `${query}?api_key=b2293c9f70e699fcb144268897e83a3f`
+    `${query}?page=${page}&api_key=b2293c9f70e699fcb144268897e83a3f`
   );
   const data = resp.data;
   // console.log(data);
   return data;
 }
 
-export async function getMoviesByQuery(query) {
+export async function getMoviesByQuery(query, page) {
   const resp = await axios.get(
-    `search/movie?query=${query}&api_key=b2293c9f70e699fcb144268897e83a3f`
+    `search/movie?query=${query}&page=${page}&api_key=b2293c9f70e699fcb144268897e83a3f`
   );
   const data = resp.data;
   // console.log(data);
