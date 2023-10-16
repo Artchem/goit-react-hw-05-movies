@@ -4,7 +4,6 @@ import { Loader } from 'components/Loader/Loader';
 import SearchForm from 'components/SearchForm/SearchForm';
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { getMoviesByQuery } from 'services/api-themovie';
 import {
   GalleryList,
@@ -35,29 +34,7 @@ function Movies() {
       try {
         const data = await getMoviesByQuery(`${query}`, page);
 
-        if (data.results.length === 0) {
-          toast.info(`There are no films found`);
-
-          setError('Sorry, there are no film found. Please try again.');
-        }
-
-        if (data.results.length !== 0 && page === 1) {
-          toast.success(` ${data.total_results} images `);
-        }
-
-        if (
-          totalMovies > 0 &&
-          totalMovies <= data.results.length + 20 &&
-          page !== 1
-        ) {
-          toast.info(`You have reached the end`);
-        }
-        // console.log('data :>> ', data);
-        // setPhotos(prevState => [...prevState, ...hits]);
-        if (page === 1) {
-          setSearchMovies(data.results);
-        }
-        setSearchMovies(prevState => [...prevState, ...data.results]);
+        setSearchMovies(data.results);
         setTotalMovies(data.total_results);
         // console.log('searchMovies :>> ', data.results);
       } catch (error) {
@@ -71,7 +48,7 @@ function Movies() {
   }, [query, page, totalMovies]);
 
   const handleFormSubmit = query => {
-    console.log(query);
+    // console.log(query);
     setSearchParams({ query: query });
     // setPage(1);
     setSearchMovies(null);
@@ -83,7 +60,7 @@ function Movies() {
     setPage(prevState => prevState + 1);
   };
 
-  console.log('location movies:>> ', location);
+  // console.log('location movies:>> ', location);
 
   return (
     <>
