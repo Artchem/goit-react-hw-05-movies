@@ -31,7 +31,14 @@ function Movies() {
       try {
         const data = await getMoviesByQuery(`${query}`, page);
 
-        setSearchMovies(data.results);
+        if (page === 1) {
+          setSearchMovies(data.results);
+        }
+        if (page !== 1) {
+          setSearchMovies(prevState => [...prevState, ...data.results]);
+        }
+
+        // setSearchMovies(data.results);
         setTotalMovies(data.total_results);
         // console.log('searchMovies :>> ', data.results);
       } catch (error) {

@@ -18,8 +18,14 @@ function Home() {
       setLoading(true);
       try {
         const { results } = await fetchMovie('trending/all/day', page);
-
-        setFilms(results);
+        // setFilms(results);
+        if (page === 1) {
+          setFilms(results);
+        }
+        if (page !== 1) {
+          setFilms(prevState => [...prevState, ...results]);
+        }
+        // setFilms(prevState => [...prevState, ...results]);
       } catch (error) {
         setError(error.message);
       } finally {
