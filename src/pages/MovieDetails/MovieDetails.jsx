@@ -46,8 +46,6 @@ function MovieDetails() {
     fetchTrendingFilm();
   }, [movieId]);
 
-  // console.log('location moviedetails:>> ', location);
-
   return (
     <>
       {loading && <Loader />}

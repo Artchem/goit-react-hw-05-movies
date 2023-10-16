@@ -24,9 +24,6 @@ function Movies() {
   const defaultImg =
     'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
 
-  // console.log('searchParams :>> ', searchParams);
-  // console.log('query :>> ', query);
-
   useEffect(() => {
     if (!query) return;
     async function addMoviesByQuery() {
@@ -59,8 +56,6 @@ function Movies() {
   const loadMore = () => {
     setPage(prevState => prevState + 1);
   };
-
-  // console.log('location movies:>> ', location);
 
   return (
     <>
